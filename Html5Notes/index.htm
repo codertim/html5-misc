@@ -1,0 +1,305 @@
+<! DOCTYPE html >
+<html>
+	<!--
+		Palette from colourlovers.com - gemstone sea shore
+			url: http://www.colourlovers.com/palette/437077/gemtone_sea_shore
+			#1693A5 - dutch teal
+			#02AAB0 - evening at sea
+			#00CDAC - may-be-green
+			#7FFF24 - a lert
+			#C3FF68 - certain frogs
+	-->
+	<head>
+		<meta charset="utf-8" />
+		<title>HTML5 Notes</title>
+		<!--[if IE]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+
+		<script src="js/underscore_1-4-2.js"></script>
+
+		<script src="js/modernizr-latest_2-6-2.js"></script>
+
+
+		<style>
+			body {
+				background-color: #C3FF68;
+			}
+
+
+			div.inner-item {
+
+				color: #7FFF24;
+				/* keep notes inside circle */
+				position: relative;
+				top: 1em;
+				left: 1em;
+
+				text-shadow: 3px 3px 3px #555555;
+
+			}
+
+
+			.inner-item:hover {
+				color: red;
+				text-shadow: 7px 7px 5px #333333;
+				-webkit-transition: color .25s ease-in, text-shadow .25s ease-in, -webkit-box-shadow .25 ease-in;
+				transition: color .25s ease-in, text-shadow .25s ease-in, box-shadow .25s ease-in;
+			}
+
+
+			.new-note {
+				color: #fff;
+				/* -webkit-transition: color .50s ease-in; */
+				/* transition: color .50s ease-in; */
+			}
+
+
+			div.single-item {
+				background:-moz-radial-gradient(60% 50% 40deg, #1653A5, #1693A5 50%);    /*	background-color: #1693A5; */
+				display:inline-block;
+
+				margin: 1em 1em;
+				padding: 0em 0em;
+
+				position: relative;
+
+				height : 200px;
+				width: 200px;
+
+				/* generated at css3maker.com */
+				border:inherit 0px #000000;
+				-moz-border-radius-topleft: 150px;
+				-moz-border-radius-topright:150px;
+				-moz-border-radius-bottomleft:150px;
+				-moz-border-radius-bottomright:150px;
+				-webkit-border-top-left-radius:150px;
+				-webkit-border-top-right-radius:150px;
+				-webkit-border-bottom-left-radius:150px;
+				-webkit-border-bottom-right-radius:150px;
+				border-top-left-radius:150px;
+				border-top-right-radius:150px;
+				border-bottom-left-radius:150px;
+				border-bottom-right-radius:150px;
+
+
+				/* box shadow - css3maker.com */
+			    -moz-box-shadow:5px 5px 5px #999999;
+			   -webkit-box-shadow:5px 5px 5px #999999;
+			    box-shadow:5px 5px 5px #999999;
+
+				/* transform - skew */
+				/*
+					transform: skew(-16deg, -5deg) ;
+					-webkit-transform: skew(-16deg, -5deg) ;
+					-moz-transform: skew(-16deg, -5deg) ;
+					-o-transform: skew(-16deg, -5deg) ;
+					-ms-transform: skew(-16deg, -5deg) ;
+				*/
+
+			}
+
+			section#list-container {
+				/* background-color: #02AAB0; */
+				margin: 2em auto;
+				padding: 1em 1em;
+				width: 50%;
+			}
+
+
+			footer {
+				color: #1693A5; 
+				font-style: italic;
+				margin-left: 100px;
+				margin-top: 5em;
+				text-align: left;
+			}
+
+			footer div#thanks {
+				/* transform - skew */
+				transform: skew(-16deg, -5deg) ;
+				-webkit-transform: skew(-16deg, -5deg) ;
+				-moz-transform: skew(-16deg, -5deg) ;
+				-o-transform: skew(-16deg, -5deg) ;
+				-ms-transform: skew(-16deg, -5deg) ;
+			}
+
+			footer div#clear-links {
+				background-color: #7FFF24;
+				font-size: 0.7em;
+				float:right;
+				margin-bottom: 0;
+				padding: 0.1em 0.4em 0.4em 3em;
+			}
+
+			header {
+				background-color: #02AAB0;
+				color: #7FFF24;
+				font-size: 3em;
+				font-weight:bold;
+				padding: 1em;
+				text-align:right;
+
+				/* text rotate - css3maker.com */
+				-webkit-transform: rotate(5deg);
+				-moz-transform: rotate(5deg);
+				-o-transform: rotate(5deg);
+				writing-mode: lr-tb;
+			}
+
+			input[type=submit] {
+				/* background-color: #02AAB0; */
+				color: #fff;
+				font-weight: bold;
+				padding: 1em 5em;
+
+				/* button gradient generated at: http://www.colorzilla.com/gradient-editor/ */
+				background: rgb(208,228,247); /* Old browsers */
+				background: -moz-linear-gradient(top, rgba(208,228,247,1) 0%, rgba(115,177,231,1) 24%, rgba(10,119,213,1) 50%, rgba(83,159,225,1) 79%, rgba(135,188,234,1) 100%); /* FF3.6+ */
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(208,228,247,1)), color-stop(24%,rgba(115,177,231,1)), color-stop(50%,rgba(10,119,213,1)), color-stop(79%,rgba(83,159,225,1)), color-stop(100%,rgba(135,188,234,1))); /* Chrome,Safari4+ */
+				background: -webkit-linear-gradient(top, rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(10,119,213,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%); /* Chrome10+,Safari5.1+ */
+				background: -o-linear-gradient(top, rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(10,119,213,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%); /* Opera 11.10+ */
+				background: -ms-linear-gradient(top, rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(10,119,213,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%); /* IE10+ */
+				background: linear-gradient(to bottom, rgba(208,228,247,1) 0%,rgba(115,177,231,1) 24%,rgba(10,119,213,1) 50%,rgba(83,159,225,1) 79%,rgba(135,188,234,1) 100%); /* W3C */
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d0e4f7', endColorstr='#87bcea',GradientType=0 ); /* IE6-9 */
+
+				border:inherit 0px #000000;
+				-moz-border-radius-topleft: 10px;
+				-moz-border-radius-topright:10px;
+				-moz-border-radius-bottomleft:10px;
+				-moz-border-radius-bottomright:10px;
+				-webkit-border-top-left-radius:10px;
+				-webkit-border-top-right-radius:10px;
+				-webkit-border-bottom-left-radius:10px;
+				-webkit-border-bottom-right-radius:10px;
+				border-top-left-radius:10px;
+				border-top-right-radius:10px;
+				border-bottom-left-radius:10px;
+				border-bottom-right-radius:10px;
+			}
+
+			input.margin25 {
+				margin: 2em 5em;
+			}
+
+			section#input-section {
+				font-size: 130%;
+				margin: 3em 1em;
+				text-align:center;
+			}
+		</style>
+
+		<script>
+			function displayItem(itemText) {
+				var newContentItem = "<div class='single-item'><div class='inner-item'>" + "<br /><br />&nbsp;&nbsp;&rarr;&nbsp;" + itemText + "</div></div>";
+				$("section#list-container").html($("section#list-container").html() + newContentItem);
+				var latestDomItem = $("div.single-item").last().css("top", counter);
+				counter += 30;   // move next note this many pixels lower than previous
+			}
+
+			function save() {
+				// alert("Saving ...");
+				// var newItem = $("input:first-child").val();
+				var newItem = $("input").first().val();
+				// alert("New item = " + newItem);
+				displayItem(newItem);
+				$("input").first().val("");
+				var oldStorageValues = sessionStorage.getItem("storageItems");
+				sessionStorage.setItem("storageItems", oldStorageValues + "|||" + newItem);
+				$("section#list-container > div > div").eq(0).addClass("new-note");
+			}
+
+			function clearFirst() {
+				$("section#list-container > div").eq(0).remove();
+			}
+
+			function clearLast() {
+				$("section#list-container > div").eq(-1).remove();
+			}
+
+			function clearAll() {
+				$("section#list-container > div").remove();
+				sessionStorage.setItem("storageItems", "");
+			}
+		</script>
+
+		<script>
+			var counter = 0;
+			$('document').ready(function() {
+				alert("Starting ...");
+				// $("input").addClass("margin25");
+				var storageValues = sessionStorage.getItem("storageItems");
+				// $("div#storage-div").html(storageValues);
+				console.log("Storage Values: " + storageValues);
+
+				if(storageValues) {
+					var currentItems = storageValues.split("|||");
+					// alert("Split values = " + currentItems);
+					var lastItems = _.reject(currentItems, function(num) { return (num == "");  });
+					// alert("lastItems = " + lastItems);
+					for(i in lastItems) {
+						// alert("Current item: i = " + i + "     value = " + currentItems[i]);
+						displayItem(lastItems[i]);
+					}
+				}
+			});
+
+		</script>
+	</head>
+
+	<body>
+		<header>HTML5 Notes</header>
+
+		<nav>
+		</nav>
+
+		<article>
+			<section id="input-section">
+				<form action="javascript:save();">
+					<span style="color:#00CDAC">Note:</span>
+					<input id="input-text" type="text" placeholder="Enter your note here!!!" autofocus spellcheck="true" required="required" />
+					<br />
+					<br />
+					<input id="submit-button" type="submit" value="Add" />
+				</form>
+			</section>
+
+			<section id="list-container">
+			</section>
+		</article>
+
+		<aside>
+			<!-- Debugging - local storage:  -->
+			<div id="storage-div">&nbsp;</div>
+		</aside>
+
+		<br />
+		<br />
+		<br />
+	
+		<footer>
+			<div id="thanks">
+				Thank you for using HTML5 Notes!
+			</div>
+
+			<div id="clear-links">
+				<a href="javascript:clearFirst();">Clear First</a>
+				|
+				<a href="javascript:clearLast();">Clear Last</a>
+				|
+				<a href="javascript:clearAll();">Clear All</a>
+			</div>
+		</footer>
+	</body>
+
+	<script>
+		if(!Modernizr.input.autofocus) {
+			// alert("No autofocus!");
+			document.getElementById('input-text').focus();
+		} else {
+			// alert("Input autofocus ok");
+		}
+	</script>
+</html>
