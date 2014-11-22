@@ -6,17 +6,47 @@
     <link rel="stylesheet" type="text/css" href="mystyles.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="reminders.js" async></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    <!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
+    <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>`
+    <script>
+      $(function() {
+        $( "#accordion" ).accordion({active:false, collapsible:true, heightStyle:'content'});
+      });
+      <!-- pre-IE9 HTML5 stuff -->
+      document.createElement('header');
+      document.createElement('nav');
+      document.createElement('article');
+      document.createElement('footer');
+    </script>
   </head>
   <body>
-    <section id="input">
-      Enter Reminder: <br />
-      <input type="text" id="remindermessage" autofocus /> <br />
-      <br />
-      Time: <br />
-      <input type="number" id="remindertime" min="1" step="1" /> <br />
-      <br />
-      <button id="gobutton">Go</button>
-    </section>
+    <header>
+      <hgroup>
+        <h3>Reminders</h3>
+        <h4>Stuff to be reminded of via popups</h4>
+      </hgroup>
+    </header>
+    <article>
+      <section id="input">
+        Enter Reminder: <br />
+        <input type="text" id="remindermessage" autofocus /> <br />
+        <br />
+        Time: <br />
+        <input type="number" id="remindertime" min="1" step="1" /> <br />
+        <br />
+        <button id="gobutton">Go</button>
+      </section>
+      <section id="all-reminders">
+        <div id="accordion">
+          <h6>Reminders</h6>
+          <div>
+            <!-- reminder messages will be dynamically added here via JavaScript -->
+          </div>
+        </div>
+      </section>
+    </article>
   </body>
 </html>
 

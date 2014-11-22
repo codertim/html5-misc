@@ -16,6 +16,9 @@ $(document).ready(function() {
         var worker = new Worker("reminder_worker.js");
         worker.postMessage(reminderMessage + "|||" + reminderTime);
 
+        // add to page
+        $("div#accordion > div").append(reminderMessage + "<br />");
+
         worker.onmessage = function(e) {
           alert("REMINDER\n\n" + e.data + "\n\n");
         }
